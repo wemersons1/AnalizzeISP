@@ -18,11 +18,11 @@ class RoleSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Administrador',
+            'name' => 'Provedor',
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Operador',
+            'name' => 'Cliente',
         ]);
     }
 }
