@@ -13,6 +13,7 @@ Route::prefix('v1')->group(function() {
     Route::middleware('auth:sanctum')->group(function() {
         Route::prefix('me')->group(function() {
             Route::get('/', [MeController::class, 'show']);
+            Route::put('/', [MeController::class, 'update']);
         });
         Route::apiResource('users', UserController::class);
         Route::apiResource('endereco', EnderecoController::class);
