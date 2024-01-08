@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Me;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexUserRequest extends FormRequest
+class UpdateMeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,21 +17,25 @@ class IndexUserRequest extends FormRequest
         return true;
     }
 
-    public function rules(): array
-    {
-        return [
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|max:255',
-            'cpf' => 'nullable|string|max:11',
-            'birthday_on_month' => 'nullable|date',
-        ];
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    public function rules(): array
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'nullable|confirmed|string|max:100',
+            'cpf' => 'required|string|max:11',
+            'birth_date' => 'nullable|date|before:today',
+            'phone2' => 'nullable|string|min:10|max:17',
+            'phone1'=> 'nullable|string|min:10|max:17',
+            'gender_id' => 'nullable|exists:users_genders,id',
+        ];
+    }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
