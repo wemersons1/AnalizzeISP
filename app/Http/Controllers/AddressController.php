@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\UserAddress\UserAddressRequest;
+use App\Http\Requests\UserAddress\UpdateUserAddressRequest;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 
@@ -54,7 +56,7 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserAddressRequest $request, string $id)
+    public function update(UpdateUserAddressRequest $request, string $id)
     {
         $validated = $request->validated();
         $address = UserAddress::find($id);

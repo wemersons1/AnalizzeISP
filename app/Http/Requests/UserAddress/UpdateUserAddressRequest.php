@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserAddressRequest extends FormRequest
+class UpdateUserAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,12 @@ class UserAddressRequest extends FormRequest
     public function rules(): array
     { 
         return [
-            "rua" => "required|string|max:255",
-            "bairro" => "required|string|max:255",
-            "CEP" => "required|string|max:12",
-            "usuario_id" => "integer|max:255",
+            "street" => "required|string|max:255",
+            "neighborhood" => "required|string|max:255",
+            "zip_code" => "required|string|max:12",
+            "user_id" => "integer|max:255",
             "company_id" => "integer|max:255",
-            "tipo_endereco_id" => "required|integer|max:255",
+            "address_types_id" => "required|integer|max:255",
             "state_id" => "integer|max:26",
             "city_id" => "integer"
         ];
