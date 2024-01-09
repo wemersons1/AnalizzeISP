@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserAddress\UserAddressRequest;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
 
-class EnderecoController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +29,10 @@ class EnderecoController extends Controller
      */
     public function store(UserAddressRequest $request)
     {
+        $validated = $request->validated();
+        $address = UserAddress::create($validated);
         
+        return $address;
     }
 
     /**
@@ -50,9 +54,14 @@ class EnderecoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserAddressRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        $address = UserAddress::find($id);
+
+        $address->update($validated);
+
+        return $address;
     }
 
     /**

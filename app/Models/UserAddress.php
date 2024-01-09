@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TipoEndereco;
+use App\Models\User;
 
-class Endereco extends Model
+class UserAddress extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class Endereco extends Model
 
 
     public function TipoEndereco(){
-        return $this->hasOne(TipoEndereco::class,'tipo_endereco_id','id');
+        return $this->hasOne(UserAddressType::class,'tipo_endereco_id','id');
         
     }
 }

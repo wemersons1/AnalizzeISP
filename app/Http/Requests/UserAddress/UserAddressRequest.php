@@ -25,11 +25,14 @@ class UserAddressRequest extends FormRequest
     public function rules(): array
     { 
         return [
-            "rua" => "required|string|max:2",
+            "rua" => "required|string|max:255",
             "bairro" => "required|string|max:255",
-            "CEP" => "required|string|max:255",
+            "CEP" => "required|string|max:12",
             "usuario_id" => "integer|max:255",
-            "tipo_endereco_id" => "required|integer|max:8",
+            "company_id" => "integer|max:255",
+            "tipo_endereco_id" => "required|integer|max:255",
+            "state_id" => "integer|max:26",
+            "city_id" => "integer"
         ];
     
     }
