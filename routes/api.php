@@ -16,6 +16,6 @@ Route::prefix('v1')->group(function() {
             Route::put('/', [MeController::class, 'update']);
         });
         Route::apiResource('users', UserController::class);
-        Route::apiResource('endereco', AddressController::class);
+        Route::apiResource('users-address', AddressController::class);
     });
 });
