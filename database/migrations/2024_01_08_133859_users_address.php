@@ -11,23 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('endereco', function (Blueprint $table) {
+        Schema::create('users_address', function (Blueprint $table) {
             $table->id();
 
-            $table->string('rua');
+            $table->string('street');
 
-            $table->string('bairro');
+            $table->string('neighborhood');
 
-            $table->string('CEP');
+            $table->string('zip_code');
 
-            $table->unsignedBigInteger('usuario_id')->nullable();
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
 
-            $table->unsignedBigInteger('tipo_endereco_id');
-            $table->foreign('tipo_endereco_id')->references('id')->on('tipo_endereco');
+            $table->unsignedBigInteger('address_types_id');
+            $table->foreign('address_types_id')->references('id')->on('address_types');
 
             $table->unsignedInteger('state_id')->nullable();
             $table->foreign('state_id')->references('id')->on('states');
@@ -48,6 +48,6 @@ return new class extends Migration
             $table->dropForeign('tipo_endereco_tipo_endereco_id_foreign');
         });*/
 
-        Schema::dropIfExists('endereco');
+        Schema::dropIfExists('users_address');
     }
 };

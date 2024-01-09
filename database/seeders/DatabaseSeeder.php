@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserGenderSeeder::class,
             UserStatusSeeder::class,
             UserSeeder::class,
+            AddressTypeSeeder::class,
         ]);
     }
 }

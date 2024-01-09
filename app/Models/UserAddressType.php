@@ -9,7 +9,7 @@ class UserAddressType extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipo_endereco';
+    protected $table = 'address_types';
 
     protected $fillable = ['name'];
 
