@@ -13,7 +13,7 @@ class UserAddress extends Model
 
     protected $table = 'users_address';
 
-    protected $fillable = ['rua', 'bairro', 'CEP','tipo_endereco','tipo_endereco_id','state_id', 'city_id'];
+    protected $fillable = ['street', 'neighborhood', 'zip_code','user_id','company_id','address_types_id','state_id', 'city_id'];
 
     protected static function boot(): void
     {
