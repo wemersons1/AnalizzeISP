@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Client;
 
-use App\Enums\RoleEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class IndexClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,18 +25,10 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'password' => 'required|confirmed|string|max:100',
-            'cpf' => 'required|string|size:11',
-            'birth_date' => 'nullable|date|before:today',
-            'phone2' => 'nullable|string|min:10|max:17',
-            'phone1'=> 'nullable|string|min:10|max:17',
-            'accession_date' => 'nullable|date',
-            'description' => 'nullable',
-            'role_id' => 'required|exists:roles,id',
-            'gender_id' => 'nullable|exists:users_genders,id',
-            'company_id' => Rule::requiredIf(Auth::user()->role_id == RoleEnum::MASTER)
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|string|max:255',
+            'cpf' => 'nullable|string|size:11',
+            'birthday_on_month' => 'nullable|date',
         ];
     }
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\UpdateUserRequest;
-use App\Http\Requests\UserAddress\UserAddressRequest;
+use App\Http\Requests\UserAddress\StoreUserAddressRequest;
 use App\Http\Requests\UserAddress\UpdateUserAddressRequest;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class UserAddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,28 +29,12 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserAddressRequest $request)
+    public function store(StoreUserAddressRequest $request)
     {
         $validated = $request->validated();
         $address = UserAddress::create($validated);
         
         return $address;
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

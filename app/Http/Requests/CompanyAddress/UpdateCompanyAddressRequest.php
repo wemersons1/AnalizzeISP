@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\UserAddress;
+namespace App\Http\Requests\CompanyAddress;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserAddressRequest extends FormRequest
+class UpdateCompanyAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +27,10 @@ class UserAddressRequest extends FormRequest
         return [
             "street" => "required|string|max:255",
             "neighborhood" => "required|string|max:255",
-            "zip_code" => "required|string|max:12",
-            "user_id" => "integer|max:255",
-            "company_id" => "integer|max:255",
-            "address_types_id" => "required|integer|max:255",
-            "state_id" => "integer|max:26",
-            "city_id" => "integer"
+            "zip_code" => "required|string|max:8",
+            "address_types_id" => "required|numeric|exists:address_types,id",
+            "state_id" => "integer|exists:states,id",
+            "city_id" => "integer|exists:cities,id"
         ];
     
     }

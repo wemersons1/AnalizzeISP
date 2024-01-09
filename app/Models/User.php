@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -76,6 +77,19 @@ class User extends Authenticatable
 
         return $query;
     }
+
+    public function scopeMyClients($query)
+    {
+        $userLogged = Auth::user();
+        if(!$userLogged->isMaster()) {    
+            $query->where('company_id', $userLogged->company_id)
+            ->where('role_id', RoleEnum::CLIENTE->value);
+        }
+
+        return $query;
+    }
+
+    
 
     public function isMaster(): bool
     {

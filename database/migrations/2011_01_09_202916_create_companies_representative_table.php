@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('companies_representative', function (Blueprint $table) {
             $table->id();
 
-            $table->string('corporate_name')->nullable();
-            $table->string('fantasy_name')->nullable();
-            $table->string('document')->nullable();//cpf ou cnpj
+            $table->string('name')->nullable();
+            $table->string('cpf')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('birth_date')->nullable();
             $table->string('email')->nullable();
-            $table->string('description')->nullable();
             $table->string('phone1');
             $table->string('phone2');
-            $table->unsignedBigInteger('representative_id')->nullable();
-            $table->foreign('representative_id')->references('id')->on('companies_representative');
+            $table->softDeletes();
 
             $table->timestamps();
         });
@@ -33,7 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('companies_representative');
     }
-    
 };

@@ -31,7 +31,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed|string|max:255',
-            'cpf' => 'required|string|max:11',
+            'cpf' => 'required|string|size:11',
             'birth_date' => 'nullable|date|before:today',
             'phone2' => 'nullable|string|min:10|max:17',
             'phone1'=> 'nullable|string|min:10|max:17',

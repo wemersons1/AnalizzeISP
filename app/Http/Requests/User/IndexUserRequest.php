@@ -22,7 +22,7 @@ class IndexUserRequest extends FormRequest
         return [
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|max:255',
-            'cpf' => 'nullable|string|max:11',
+            'cpf' => 'nullable|string|size:11',
             'birthday_on_month' => 'nullable|date',
         ];
     }
